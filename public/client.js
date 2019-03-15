@@ -1,6 +1,8 @@
 // client-side js
 // run by the browser each time your view template is loaded
 
+// var request = require('request');
+
 console.log('hello world :o');
 
 // our default array of dreams
@@ -14,6 +16,7 @@ const dreams = [
 const dreamsList = document.getElementById('dreams');
 const dreamsForm = document.forms[0];
 const dreamInput = dreamsForm.elements['dream'];
+const phoneNumberInput = dreamsForm.elements['phoneNumber'];
 
 // a helper function that creates a list item for a given dream
 const appendNewDream = function(dream) {
@@ -34,7 +37,8 @@ dreams.forEach( function(dream) {
 // listen for the form to be submitted and add a new dream when it is
 dreamsForm.onsubmit = function(event) {
   
-  console.log('on submit will happen')
+  console.log('on submit will happen');
+  console.log(event);
   
   // stop our form submission from refreshing the page
   event.preventDefault();
@@ -45,27 +49,44 @@ dreamsForm.onsubmit = function(event) {
 
   // send message
   console.log('will send message: ' + dreamInput.value)
-  sendMessage(dreamInput.value)
+  sendMessage({ message: dreamInput.value, phoneNumber: phoneNumberInput.value });
   
   // reset form 
   dreamInput.value = '';
   dreamInput.focus();
 };
 
-function sendMessage(message) {
+function sendMessage({ message, phoneNumber }) {
   
-  console.log('sending message: ')
+  console.log('sending message: ' + message)
 
-const accountSid = 'AC6451fad108c7427784dfc197990b9b7e'; 
-const authToken = 'dadaa6600fa88811d513ae0dbd7d530b'; 
-const client = require('twilio')(accountSid, authToken); 
- 
-client.messages 
-      .create({ 
-         body: 'Your appointment is coming up on July 21 at 3PM', 
-         from: 'whatsapp:+14155238886',       
-         to: 'whatsapp:+16264989505' 
-       }) 
-      .then(message => console.log(message.sid)) 
-      .done();
+  const url='https://pragwash.glitch.me/sendmessage';
+  
+  var data = { message, phoneNumber };
+
+  fetch(url, {
+    method: 'POST', // or 'PUT'
+    body: JSON.stringify(data), // data can be `string` or {object}!
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+  .then(response => console.log('Success:', JSON.stringify(response)))
+  .catch(error => console.error('Error:', error));
 }
+
+// function sendMessage(message) {
+  
+//   console.log('sending message: ' + message)
+
+//   // https://pragwash.glitch.me/sendmessage
+  
+//   const Http = new XMLHttpRequest();
+//   const url='https://pragwash.glitch.me/sendmessage';
+//   Http.open("POST", url);
+//   Http.setRequestHeader('Content-Type', 'application/json');
+//   Http.send({ message });
+//   Http.onreadystatechange=(e)=>{
+//     console.log(Http.responseText)
+//   }
+// }

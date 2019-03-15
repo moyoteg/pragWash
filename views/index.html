@@ -19,7 +19,7 @@
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
-    
+
     <!-- import the webpage's client-side javascript file -->
     <script src="/client.js" defer></script>
   </head>
@@ -32,14 +32,15 @@
 
     <main>
       <p class="bold">Hola,</p>
-      
+
       <p>Inserte el numero y mensaje para el cliente:</p>
-      
+
       <form>
+        <input name="phoneNumber" type="text" maxlength="100" placeholder="Type phone number here">
         <input name="update" type="text" maxlength="100" placeholder="Type message to send here" aria-labelledby="submit-update">
         <button type="submit" id="submit-update">Send Message</button>
       </form>
-      
+
       <section class="updates">
         <ul id="updates"></ul>
       </section>
