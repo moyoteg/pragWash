@@ -1,72 +1,67 @@
 // client-side js
 // run by the browser each time your view template is loaded
 
-// var request = require('request');
-
 console.log('hello world :o');
 
-// our default array of dreams
-const dreams = [
-  'Find and count some sheep',
-  'Climb a really tall mountain',
-  'Wash the dishes'
+// our default array of updates
+const updates = [
+  'Historial de actualizaciones...',
 ];
 
 // define variables that reference elements on our page
-const dreamsList = document.getElementById('dreams');
-const dreamsForm = document.forms[0];
-const dreamInput = dreamsForm.elements['dream'];
-const phoneNumberInput = dreamsForm.elements['phoneNumber'];
+const updatesList = document.getElementById('updates');
+const updatesForm = document.forms[0];
+const updateInput = updatesForm.elements['update'];
+const phoneNumberInput = updatesForm.elements['phoneNumber'];
 
-// a helper function that creates a list item for a given dream
-const appendNewDream = function(dream) {
+// a helper function that creates a list item for a given update
+const appendNewUpdate = function(update) {
   
-    console.log('appendNewDream will happen')
+    console.log('appendNewUpdate will happen')
 
 
   const newListItem = document.createElement('li');
-  newListItem.innerHTML = dream;
-  dreamsList.appendChild(newListItem);
+  newListItem.innerHTML = update;
+  updatesList.appendChild(newListItem);
 }
 
-// iterate through every dream and add it to our page
-dreams.forEach( function(dream) {
-  appendNewDream(dream);
+// iterate through every update and add it to our page
+updates.forEach( function(update) {
+  appendNewUpdate(update);
 });
 
-// listen for the form to be submitted and add a new dream when it is
-dreamsForm.onsubmit = function(event) {
+// listen for the form to be submitted and add a new update when it is
+updatesForm.onsubmit = function(event) {
   
-  console.log('on submit will happen');
-  console.log(event);
+  console.log('on submit will happen')
   
   // stop our form submission from refreshing the page
   event.preventDefault();
 
-  // get dream value and add it to the list
-  dreams.push(dreamInput.value);
-  appendNewDream(dreamInput.value);
+  // get update value and add it to the list
+  updates.push(updateInput.value);
+  appendNewUpdate(updateInput.value);
 
   // send message
-  console.log('will send message: ' + dreamInput.value)
-  sendMessage({ message: dreamInput.value, phoneNumber: phoneNumberInput.value });
-  
+  console.log('will send message: ' + updateInput.value)
+  console.log('to phone number: ' + phoneNumberInput.value)
+  sendUpdate({ message: updateInput.value, phoneNumber: phoneNumberInput.value });
+
   // reset form 
-  dreamInput.value = '';
-  dreamInput.focus();
+  updateInput.value = '';
+  updateInput.focus();
 };
 
-function sendMessage({ message, phoneNumber }) {
+function sendUpdate(update) {
   
-  console.log('sending message: ' + message)
+  const { message, phoneNumber } = update;
+  console.log('sending update: \"' + message + '\" to: ' + phoneNumber)
 
-  const url='https://pragwash.glitch.me/sendmessage';
-  
-  var data = { message, phoneNumber };
+  const url='https://pragwash.glitch.me/sendupdate';
 
   fetch(url, {
     method: 'POST', // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
+    body: JSON.stringify(update), // data can be `string` or {object}!
     headers:{
       'Content-Type': 'application/json'
     }
@@ -74,19 +69,3 @@ function sendMessage({ message, phoneNumber }) {
   .then(response => console.log('Success:', JSON.stringify(response)))
   .catch(error => console.error('Error:', error));
 }
-
-// function sendMessage(message) {
-  
-//   console.log('sending message: ' + message)
-
-//   // https://pragwash.glitch.me/sendmessage
-  
-//   const Http = new XMLHttpRequest();
-//   const url='https://pragwash.glitch.me/sendmessage';
-//   Http.open("POST", url);
-//   Http.setRequestHeader('Content-Type', 'application/json');
-//   Http.send({ message });
-//   Http.onreadystatechange=(e)=>{
-//     console.log(Http.responseText)
-//   }
-// }

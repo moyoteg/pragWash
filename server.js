@@ -7,13 +7,13 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+// twilio
+const accountSid = process.env.accountSid; 
+const authToken = process.env.authToken; 
+const client = require('twilio')(accountSid, authToken);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
-const accountSid = 'AC6451fad108c7427784dfc197990b9b7e'; 
-const authToken = 'dadaa6600fa88811d513ae0dbd7d530b'; 
-const client = require('twilio')(accountSid, authToken); 
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -31,21 +31,18 @@ const listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-app.post('/sendmessage', function(res,req) {  
+app.post('/sendupdate', function(res,req) {  
   
+  console.log('/sendupdate was called');
+  
+  // phones
   const fromTel = '+14155238886'
-  
   const qTel   =   '+527222338404'
   const moiTel =   '+16264989505'
   const ferTel =   '+5217224188115'
-
-  const accountSid = process.env.accountSid; 
-  const authToken = process.env.authToken; 
-  const client = require('twilio')(accountSid, authToken);
-  
   
   const { message, phoneNumber } = res.body;
-  console.log("request post: " + message);
+  console.log("request post body: " + message);
 
   client.messages 
         .create({ 
