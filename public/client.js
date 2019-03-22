@@ -86,7 +86,7 @@ function sendUpdate(update) {
 
   // req.protocol+"://"+req.headers.host
 
-  const url= window.location.hostname + '/send-update';
+  const url='https://' + window.location.hostname + '/send-update';
 
   fetch(url, {
     method: 'POST', // or 'PUT'
