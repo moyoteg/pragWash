@@ -33,6 +33,9 @@ updates.forEach( function(update) {
 // listen for the form to be submitted and add a new update when it is
 updatesForm.onsubmit = function(event) {
   
+  // stop our form submission from refreshing the page
+  event.preventDefault();
+  
   console.log('on submit will happen')
   
   // check message service conditions
@@ -57,9 +60,6 @@ updatesForm.onsubmit = function(event) {
     alert("Por favor introduzca un mensaje")
     return;
   }
-  
-  // stop our form submission from refreshing the page
-  event.preventDefault();
 
   // get update value and add it to the list
   updates.push(updateInput.value);
