@@ -84,7 +84,9 @@ function sendUpdate(update) {
   const { message, phoneNumber, messagingService } = update;
   console.log('sending update: \"' + message + '\" to: ' + phoneNumber + ' with messaging service: ' + messagingService)
 
-  const url='https://pragwash.glitch.me/send-update';
+  // req.protocol+"://"+req.headers.host
+
+  const url= window.location.hostname + '/send-update';
 
   fetch(url, {
     method: 'POST', // or 'PUT'
