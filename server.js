@@ -40,15 +40,15 @@ app.post('/send-update', function(res,req) {
   const moiTel =   '+16264989505'
   const ferTel =   '+5217224188115'
   
-  const { message, phoneNumber, messagingService } = res.body;
+  var { message, phoneNumber, messagingService } = res.body;
   console.log("request post body: " + message);
   
   switch(messagingService) {
     case 'whatsapp':
-      break
+      break;
     case 'sms':
       messagingService = ''
-      break
+      break;
   }
   
   client.messages 
