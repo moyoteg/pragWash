@@ -20,7 +20,6 @@ const appendNewUpdate = function(update) {
   
     console.log('appendNewUpdate will happen')
 
-
   const newListItem = document.createElement('li');
   newListItem.innerHTML = update;
   updatesList.appendChild(newListItem);
@@ -41,23 +40,22 @@ updatesForm.onsubmit = function(event) {
   switch(messagingServiceSelect.value) {
     case 'whatsapp':
       console.log('using whatsapp')
-      break
+      break;
     case 'sms':
       console.log('using sms')
-      break
+      break;
     default:
       alert("Por favor escoja servicio de mensajeria");    
-      return
-      break
+      return;
   }
   
   // check required info conditions
   if (phoneNumberInput.value == '') {
     alert("Por favor introduzca un numero de telefono")
-    return
+    return;
   } else if (updateInput.value == '') {
     alert("Por favor introduzca un mensaje")
-    return
+    return;
   }
   
   // stop our form submission from refreshing the page
