@@ -1,7 +1,7 @@
 // client-side js
 // run by the browser each time your view template is loaded
 
-console.log('hello world :o');
+console.log('loaded client.js');
 
 // our default array of updates
 const updates = [
@@ -13,6 +13,7 @@ const updatesList = document.getElementById('updates');
 const updatesForm = document.forms[0];
 const updateInput = updatesForm.elements['update'];
 const phoneNumberInput = updatesForm.elements['phoneNumber'];
+const messagingServiceSelect = updatesForm.elements['messagingService'];
 
 // a helper function that creates a list item for a given update
 const appendNewUpdate = function(update) {
@@ -35,6 +36,30 @@ updatesForm.onsubmit = function(event) {
   
   console.log('on submit will happen')
   
+  // check message service conditions
+  console.log('messaging service selected: ' + messagingServiceSelect.value)
+  switch(messagingServiceSelect.value) {
+    case 'whatsapp':
+      console.log('using whatsapp')
+      break
+    case 'sms':
+      console.log('using sms')
+      break
+    default:
+      alert("Por favor escoja servicio de mensajeria");    
+      return
+      break
+  }
+  
+  // check required info conditions
+  if (phoneNumberInput.value == '') {
+    alert("Por favor introduzca un numero de telefono")
+    return
+  } else if (updateInput.value == '') {
+    alert("Por favor introduzca un mensaje")
+    return
+  }
+  
   // stop our form submission from refreshing the page
   event.preventDefault();
 
@@ -45,7 +70,11 @@ updatesForm.onsubmit = function(event) {
   // send message
   console.log('will send message: ' + updateInput.value)
   console.log('to phone number: ' + phoneNumberInput.value)
-  sendUpdate({ message: updateInput.value, phoneNumber: phoneNumberInput.value });
+  sendUpdate({ 
+    message: updateInput.value, 
+    phoneNumber: phoneNumberInput.value,
+    messagingService: messagingServiceSelect.value
+  });
 
   // reset form 
   updateInput.value = '';
@@ -54,18 +83,22 @@ updatesForm.onsubmit = function(event) {
 
 function sendUpdate(update) {
   
-  const { message, phoneNumber } = update;
-  console.log('sending update: \"' + message + '\" to: ' + phoneNumber)
+  const { message, phoneNumber, messagingService } = update;
+  console.log('sending update: \"' + message + '\" to: ' + phoneNumber + ' with messaging service: ' + messagingService)
 
-  const url='https://pragwash.glitch.me/sendupdate';
+  const url='https://pragwash.glitch.me/send-update';
 
   fetch(url, {
     method: 'POST', // or 'PUT'
     body: JSON.stringify(update), // data can be `string` or {object}!
     headers:{
+            'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then(res => res.json())
-  .then(response => console.log('Success:', JSON.stringify(response)))
+  })
+  .then(response => {
+        console.log('sent update to server: ' + response)
+        console.log('Success:', JSON.stringify(response))
+        })
   .catch(error => console.error('Error:', error));
 }
