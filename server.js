@@ -8,6 +8,10 @@ const cors = require('cors')
 require('dotenv').config();
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors())
+app.use(express.static('public'));
 
 // twilio
 const accountSid = process.env.accountSid; 
@@ -15,16 +19,6 @@ const authToken = process.env.authToken;
 console.log('process.env.accountSid: ' + accountSid)
 console.log('process.env.authToken: ' + authToken)
 const client = require('twilio')(accountSid, authToken);
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors())
-
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
-
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
