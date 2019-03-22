@@ -25,25 +25,49 @@
   </head>
   <body>
     <header>
-      <h1>
-        PragWash
-      </h1>
+      <h1>PragWash</h1>
     </header>
-
     <main>
-      <p class="bold">Hola,</p>
-
-      <p>Inserte el numero y mensaje para el cliente:</p>
-
+      <p class="bold">Hola!</p>
+      <p>Inserte el numero y mensaje para notificar al cliente:</p>
       <form>
-        <input name="phoneNumber" type="text" maxlength="100" placeholder="Type phone number here">
-        <input name="update" type="text" maxlength="100" placeholder="Type message to send here" aria-labelledby="submit-update">
-        <button type="submit" id="submit-update">Send Message</button>
+        <select name="messagingService">Servicio de mensajeria    
+          <option value="placeholder" disabled selected>Servicio de mensajeria</option>
+          <option value="whatsapp">WhatsApp</option>
+          <option value="sms">SMS</option>
+        <input name="phoneNumber" type="text" maxlength="100" placeholder="escriba el numero de telefono aqui">
+        </select>
+        <input name="update" type="text" maxlength="100" placeholder="escriba el mensage aqui" aria-labelledby="submit-update">
+        <button type="submit" id="submit-update">Mandar Mensaje</button>
       </form>
 
       <section class="updates">
         <ul id="updates"></ul>
       </section>
+      <!-- Load Facebook SDK for JavaScript -->
+          <div id="fb-root"></div>
+          <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                xfbml            : true,
+                version          : 'v3.2'
+              });
+            };
+
+            (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+
+          <!-- Your customer chat code -->
+          <div class="fb-customerchat"
+            attribution=setup_tool
+            page_id="1343904655687888"
+            theme_color="#0084ff">
+          </div>
     </main>
 
     <footer>

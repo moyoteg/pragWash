@@ -31,9 +31,9 @@ const listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
-app.post('/sendupdate', function(res,req) {  
+app.post('/send-update', function(res,req) {  
   
-  console.log('/sendupdate was called');
+  console.log('/send-update was called');
   
   // phones
   const fromTel = '+14155238886'
@@ -41,15 +41,27 @@ app.post('/sendupdate', function(res,req) {
   const moiTel =   '+16264989505'
   const ferTel =   '+5217224188115'
   
-  const { message, phoneNumber } = res.body;
+  const { message, phoneNumber, messagingService } = res.body;
   console.log("request post body: " + message);
-
+  
+  switch(messagingService) {
+    case 'whatsapp':
+      break
+    case 'sms':
+      messagingService = ''
+      break
+  }
+  
   client.messages 
         .create({ 
            body: "pragWash: " + message, 
-           from: `whatsapp:${fromTel}`,       
-           to: `whatsapp:${phoneNumber}`
-         }) 
-        .then(message => console.log(message.sid)) 
+           from: `${messagingService}:${fromTel}`,       
+           to: `${messagingService}:${phoneNumber}`
+        }) 
+        .then(message => {
+          const log = 'message with id:' + message.sid + ' sent successfully'
+          console.log(log);
+          res.res.send(log);
+        })
         .done();
 });

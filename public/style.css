@@ -8,11 +8,12 @@
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
+  background-color: #DBDDDE;
 }
 
 h1 {
   font-style: italic;
-  color: #373fff;
+  color: #5856D6;
 }
 
 .bold {
@@ -26,7 +27,7 @@ p {
 form {
   margin-bottom: 25px;
   padding: 15px;
-  background-color: cyan;
+  background-color: #5856D6;
   display: inline-block;
   width: 100%;
   max-width: 340px;
@@ -43,17 +44,34 @@ input {
   font-size: 16px;
 }
 
+select {
+  background-color: white;
+  color: #333;
+  display: block;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 20px;
+/*   line-height: 30px; */
+  width: 100%;
+}
+
 button {
-  font-size: 16px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid grey;
-  box-shadow: 2px 2px teal;
-  cursor: pointer;
+  background: #1D62F0;
+  color: white;
+  border-style: outset;
+  border-color: #0066A2;
+  height: 50px;
+  width: 100%;
+  font: bold 15px arial, sans-serif;
+  text-shadow:none;
 }
 
 button:hover {
-  background-color: yellow;
+  background-color: white;
+    color: gray;
 }
 
 button:active {
@@ -69,3 +87,5 @@ footer {
   padding-top: 25px;
   border-top: 1px solid lightgrey;
 }
+
+/*//////////////*/
