@@ -4,16 +4,21 @@
 // init project
 const express = require('express')
 const bodyParser = require('body-parser');
+const cors = require('cors')
+require('dotenv').config();
 
 const app = express();
 
 // twilio
 const accountSid = process.env.accountSid; 
 const authToken = process.env.authToken; 
+console.log('process.env.accountSid: ' + accountSid)
+console.log('process.env.authToken: ' + authToken)
 const client = require('twilio')(accountSid, authToken);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors())
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
