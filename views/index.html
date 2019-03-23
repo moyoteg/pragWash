@@ -25,10 +25,10 @@
   </head>
   <body>
     <header>
-      <h1>PragWash</h1>
+      <img src="https://cdn.glitch.com/2ea1f8b5-5042-42ca-a8a9-a445ca158248%2Fpragwash.png?1553310369898" alt="logo" />
     </header>
     <main>
-      <p class="bold">Hola!</p>
+      <h2 class="bold">Hola!</h2>
       <p>Inserte el numero y mensaje para notificar al cliente:</p>
       <form>
         <select name="messagingService">Servicio de mensajeria    
@@ -37,9 +37,11 @@
           <option value="sms">SMS</option>
         <input name="phoneNumber" type="tel" maxlength="100" placeholder="+5(555)555-5555">
         </select>
-        <input name="update" type="text" maxlength="100" placeholder="escriba el mensage aqui" aria-labelledby="submit-update">
+<!--         <input name="update" type="text" maxlength="100" placeholder="Escriba el mensage aqui" aria-labelledby="submit-update"> -->
+        <textarea name="update" maxlength="100" placeholder="Escriba el mensage aqui"></textarea>
         <button type="submit" id="submit-update">Mandar Mensaje</button>
       </form>
+
       <section class="updates">
         <ul id="updates"></ul>
       </section>

@@ -8,12 +8,18 @@
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
-  background-color: #DBDDDE;
+  background-color: white;
 }
 
 h1 {
   font-style: italic;
   color: #5856D6;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+
+h2 {
+  color: #3a3a3a;
 }
 
 .bold {
@@ -21,20 +27,52 @@ h1 {
 }
 
 p {
-  max-width: 600px;
+/*   max-width: 600px; */
+  width: 100%;
+  font-weight: bold;
+  color: #3a3a3a;
 }
 
 form {
   margin-bottom: 25px;
   padding: 15px;
-  background-color: #5856D6;
   display: inline-block;
   width: 100%;
   max-width: 340px;
   border-radius: 3px;
 }
 
+img {
+      width: 100%;
+    height: auto;
+}
+
 input {
+  display: block;
+  color: #3a3a3a;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+select {
+  background-color: white;
+  color: #3a3a3a;
+  display: block;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: 20px;
+  width: 100%;
+}
+
+textarea {
   display: block;
   margin-bottom: 10px;
   padding: 5px;
@@ -42,27 +80,14 @@ input {
   border: 1px solid lightgrey;
   border-radius: 3px;
   font-size: 16px;
-}
-
-select {
-  background-color: white;
-  color: #333;
-  display: block;
-  box-sizing: border-box;
-  padding: 20px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 20px;
-/*   line-height: 30px; */
-  width: 100%;
+  color: #3a3a3a;
 }
 
 button {
   background: #1D62F0;
   color: white;
   border-style: outset;
-  border-color: #0066A2;
+  background-color: #5856D6;
   height: 50px;
   width: 100%;
   font: bold 15px arial, sans-serif;
@@ -70,8 +95,8 @@ button {
 }
 
 button:hover {
-  background-color: white;
-    color: gray;
+  background-color: #5856D6;
+  color: lightgray;
 }
 
 button:active {
