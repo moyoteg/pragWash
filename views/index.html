@@ -22,31 +22,54 @@
 
     <!-- import the webpage's client-side javascript file -->
     <script src="/client.js" defer></script>
+    
+    
+    
   </head>
-  <body>
+  <div class="flex-container">
     <header>
-      <img src="https://cdn.glitch.com/2ea1f8b5-5042-42ca-a8a9-a445ca158248%2Fpragwash.png?1553310369898" alt="logo" />
+      <img src="https://cdn.glitch.com/2ea1f8b5-5042-42ca-a8a9-a445ca158248%2Fpragwash.png?1553310369898" alt="logo" height="42"/>
+    
     </header>
-    <main>
-      <h2 class="bold">Hola!</h2>
+  </div>
+  
+  <body>
+    
+    <div class="flex-container">
+      
+      <h2 class="bold" style="flex: 0 0 15px">Hola!</h2>  
+      
       <p>Inserte el numero y mensaje para notificar al cliente:</p>
+      
       <form>
+        
         <select name="messagingService">Servicio de mensajeria    
+          
           <!-- <option value="placeholder" disabled selected>Servicio de mensajeria</option> -->
+          
           <option value="whatsapp">WhatsApp</option>
+          
           <option value="sms">SMS</option>
-        <input name="phoneNumber" type="tel" maxlength="100" placeholder="+5(555)555-5555">
+        
+          <input name="phoneNumber" type="tel" maxlength="100" placeholder="+5(555)555-5555">
+        
         </select>
-<!--         <input name="update" type="text" maxlength="100" placeholder="Escriba el mensage aqui" aria-labelledby="submit-update"> -->
+        
         <textarea name="update" maxlength="100" placeholder="Escriba el mensage aqui"></textarea>
+      
         <button type="submit" id="submit-update">Mandar Mensaje</button>
+      
       </form>
+      
+      <div>
+    <main>
 
       <section class="updates">
         <ul id="updates"></ul>
       </section>
+      
       <!-- Load Facebook SDK for JavaScript -->
-      <div id="fb-root"></div>
+    <div id="fb-root"></div>
       <script>
         window.fbAsyncInit = function() {
           FB.init({
@@ -82,4 +105,5 @@
     <script src="https://button.Glitch.me/button.js"></script>
 
   </body>
+  
 </html>

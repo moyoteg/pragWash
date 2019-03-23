@@ -7,7 +7,7 @@
 
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
+/*   margin: 2em; */
   background-color: white;
 }
 
@@ -19,7 +19,13 @@ h1 {
 }
 
 h2 {
-  color: #3a3a3a;
+/*   color: #3a3a3a; */
+/*   margin-bottom: 5px; */
+/*   padding: 5px; */
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+/*   border-radius: 3px; */
 }
 
 .bold {
@@ -27,8 +33,10 @@ h2 {
 }
 
 p {
-/*   max-width: 600px; */
+/*   margin-bottom: 5px; */
+  padding: 5px;
   width: 100%;
+  max-width: 340px;
   font-weight: bold;
   color: #3a3a3a;
 }
@@ -42,9 +50,17 @@ form {
   border-radius: 3px;
 }
 
-img {
-      width: 100%;
-    height: auto;
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {    
+  width: 100%;
+  max-width: 340px;  
+  height: auto;
 }
 
 input {
@@ -112,5 +128,3 @@ footer {
   padding-top: 25px;
   border-top: 1px solid lightgrey;
 }
-
-/*//////////////*/
