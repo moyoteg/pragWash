@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+header {
+  padding-top: 15px;
+}
+
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
 /*   margin: 2em; */
@@ -43,7 +47,8 @@ p {
   width: 100%;
   max-width: 340px;
   font-weight: bold;
-  color: #3a3a3a;
+/*   color: #3a3a3a; */
+  color: #4a4a4a;
 }
 
 form {
@@ -127,6 +132,7 @@ button:active {
 
 li {
   margin-bottom: 5px;
+  color: #4a4a4a;
 }
 
 footer {
