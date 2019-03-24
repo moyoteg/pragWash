@@ -19,13 +19,18 @@ h1 {
 }
 
 h2 {
-/*   color: #3a3a3a; */
+  color: #8E8E93;
 /*   margin-bottom: 5px; */
 /*   padding: 5px; */
   display: inline-block;
   width: 100%;
   max-width: 340px;
 /*   border-radius: 3px; */
+}
+
+h2.headerGreet {
+  text-align: center;
+  font-weight: bold;
 }
 
 .bold {
@@ -69,6 +74,7 @@ input {
   margin-bottom: 10px;
   padding: 5px;
   width: 100%;
+  height: 28px;
   border: 1px solid lightgrey;
   border-radius: 3px;
   font-size: 16px;
@@ -103,7 +109,7 @@ button {
   background: #1D62F0;
   color: white;
   border-style: outset;
-  background-color: #5856D6;
+  background-color: #ae4ff8;
   height: 50px;
   width: 100%;
   font: bold 15px arial, sans-serif;
