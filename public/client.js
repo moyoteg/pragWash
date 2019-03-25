@@ -14,6 +14,7 @@ const updatesForm = document.forms[0];
 const updateInput = updatesForm.elements['update'];
 const phoneNumberInput = updatesForm.elements['phoneNumber'];
 const messagingServiceSelect = updatesForm.elements['messagingService'];
+const commitHashParagraph = document.getElementById('commitHashParagraph');
 
 // a helper function that creates a list item for a given update
 const appendNewUpdate = function(update) {
@@ -99,6 +100,28 @@ function sendUpdate(update) {
   .then(response => {
         console.log('sent update to server: ' + response)
         console.log('Success:', JSON.stringify(response))
+    return response;
         })
   .catch(error => console.error('Error:', error));
+}
+
+getCommitHash()
+
+function getCommitHash() {
+    
+  const url='https://' + window.location.hostname + '/get-commit-hash';
+  
+  fetch(url)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(json) {
+    var { sha, author, date, message } = json;
+    console.log('sha: ' + sha);  
+    commitHashParagraph.innerHTML = 'updated: ' + date;
+  })
+    .catch(error => {
+    console.error('Error:', error)
+  });
+
 }
